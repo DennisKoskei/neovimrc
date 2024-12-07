@@ -4,7 +4,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
 vim.opt.number = true
@@ -31,8 +31,11 @@ vim.opt.scrolloff = 10
 -- vim.opt.
 
 -- [[ Basic Keymaps ]]
-vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>") --> MyNote:(come to this command and set it to desired state)
+vim.keymap.set("n", "<leader><CR>", "<cmd>nohlsearch<CR>") --> MyNote:(come to this command and set it to desired state)
 vim.keymap.set("i", "jj", "<Esc>")
+vim.keymap.set("i", "<C->", function()
+	print("Take some more juice pleaseeeeeeeeee !!!!1")
+end) --> Add my own text keymap
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 -- TIP: Disable arrow keys in normal mode
@@ -80,6 +83,21 @@ require("lazy").setup({
 				topdelete = { text = "‾" },
 				changedelete = { text = "~" },
 			},
+		},
+	},
+	{
+		"vhyrro/luarocks.nvim",
+		priority = 1000, --Very high priority is requried, luarocks.nvim should run as first plugin in your config
+		config = true,
+	},
+	{ -- Neo-Tree
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v3.x",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+			"MunifTanjim/nui.nvim",
+			-- "3rd/imiage.nvim", --Optional image support in preview window: see `# Preview Mode` for more information
 		},
 	},
 	{ -- Useful plugin to show you pending keybinds.
