@@ -31,8 +31,9 @@ vim.opt.scrolloff = 15
 -- vim. -- Show the 79 limit char for writing
 
 -- [[ Basic Keymaps ]]
-vim.keymap.set("n", "<leader><CR>", "<cmd>nohlsearch<CR>") --> MyNote:(come to this command and set it to desired state)
+vim.keymap.set("n", "<leader>n", "<cmd>nohlsearch<CR>") --> MyNote:(come to this command and set it to desired state)
 vim.keymap.set("i", "jj", "<Esc>")
+-- vim.keymap.set("n", "jj", "<Esc>")
 vim.keymap.set("i", "<C->", function()
 	print("Take some more juice pleaseeeeeeeeee !!!!1")
 end) --> Add my own text keymap
@@ -93,7 +94,7 @@ require("lazy").setup({
 		priority = 1000, --Very high priority is requried, luarocks.nvim should run as first plugin in your config
 		config = true,
 		opts = {
-			rocks = { hererocks = true }, -- specifies a list of rocks to install
+			rocks = { hererocks = false }, -- specifies a list of rocks to install
 		},
 	},
 
@@ -106,7 +107,10 @@ require("lazy").setup({
 			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
 			"MunifTanjim/nui.nvim",
 		},
-		vim.keymap.set("n", "-", function()
+		filesystem = {
+			hijack_netrw_behaviour = "open_default",
+		},
+		vim.keymap.set("n", "<C-n>", function()
 			local reveal_file = vim.fn.expand("%:p")
 			if reveal_file == "" then
 				reveal_file = vim.fn.getcwd()
