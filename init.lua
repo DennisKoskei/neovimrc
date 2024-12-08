@@ -33,8 +33,9 @@ vim.opt.scrolloff = 15
 -- [[ Basic Keymaps ]]
 vim.keymap.set("n", "<leader>n", "<cmd>nohlsearch<CR>") --> MyNote:(come to this command and set it to desired state)
 vim.keymap.set("i", "jj", "<Esc>")
+-- vim.keymap.set("n", "q", "<Esc>")
 -- vim.keymap.set("n", "jj", "<Esc>")
-vim.keymap.set("i", "<C->", function()
+vim.keymap.set("n", "<C-qq", function()
 	print("Take some more juice pleaseeeeeeeeee !!!!1")
 end) --> Add my own text keymap
 --> Add a keymap which will save the document whenever you hit  Ctrl + Enter`.
@@ -107,29 +108,7 @@ require("lazy").setup({
 			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
 			"MunifTanjim/nui.nvim",
 		},
-		filesystem = {
-			hijack_netrw_behaviour = "open_default",
-		},
-		vim.keymap.set("n", "<C-n>", function()
-			local reveal_file = vim.fn.expand("%:p")
-			if reveal_file == "" then
-				reveal_file = vim.fn.getcwd()
-			else
-				local f = io.open(reveal_file, "r")
-				if f then
-					f.close(f)
-				else
-					reveal_file = vim.fn.getcwd()
-				end
-			end
-			require("neo-tree.command").execute({
-				action = "focus", -- OPTIONAL, this is the default value
-				source = "filesystem", -- OPTIONAL, this is the default value
-				position = "left", -- OPTIONAL, this is the default value
-				reveal_file = reveal_file, -- path to file or folder to reveal
-				reveal_force_cwd = true, -- change cwd without asking if needed
-			})
-		end, { desc = "Open neo-tree at current file or working directory" }),
+		vim.keymap.set("n", "<C-n>", ":Neotree filesystem reveal left<CR>"),
 	},
 
 	{ -- Monokai Pro Theme
@@ -263,6 +242,7 @@ require("lazy").setup({
 			vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
 			vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
 			vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
+			-- vim.keymap.set("n", "q","<Esc>" , { desc = "[q] Exit Telescope" })
 
 			vim.keymap.set("n", "<leader>/", function()
 				builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
@@ -365,7 +345,7 @@ require("lazy").setup({
 
 			-- Change diagnostic symbols in the sign column (gutter)
 			if vim.g.have_nerd_font then
-				local signs = { ERROR = "‼", WARN = "⚠", INFO = "", HINT = "" }
+				local signs = { ERROR = "Err", WARN = "W", INFO = "I", HINT = "" }
 				local diagnostic_signs = {}
 				for type, icon in pairs(signs) do
 					diagnostic_signs[vim.diagnostic.severity[type]] = icon
@@ -458,7 +438,6 @@ require("lazy").setup({
 				end,
 				dependencies = {},
 			},
-
 			"saadparwaiz1/cmp_luasnip",
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-path",
