@@ -1,11 +1,11 @@
 return {-- Main LSP Configuration
 	"neovim/nvim-lspconfig",
 	dependencies = {
-		{ "williamboman/mason.nvim", config = true }, -- NOTE: Must be loaded before dependants
+		{ "williamboman/mason.nvim", config = true },
 		"williamboman/mason-lspconfig.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
-		{ "j-hui/fidget.nvim", opts = {} }, -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-		"hrsh7th/cmp-nvim-lsp", -- Allows extra capabilities provided by nvim-cmp
+		{ "j-hui/fidget.nvim", opts = {} },
+		"hrsh7th/cmp-nvim-lsp",
 	},
 	config = function()
 		vim.api.nvim_create_autocmd("LspAttach", {
@@ -66,7 +66,7 @@ return {-- Main LSP Configuration
 
 		-- Change diagnostic symbols in the sign column (gutter)
 		if vim.g.have_nerd_font then
-			local signs = { ERROR = "🔴", WARN = "🟠", INFO = "I", HINT = "H" }
+			local signs = { ERROR = "E", WARN = "W", INFO = "I", HINT = "H" }
 			local diagnostic_signs = {}
 			for type, icon in pairs(signs) do
 				diagnostic_signs[vim.diagnostic.severity[type]] = icon

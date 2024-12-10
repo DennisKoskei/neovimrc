@@ -1,12 +1,14 @@
 -- [[ Basic Keymaps ]]
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>pp", vim.cmd.Ex)
 vim.keymap.set("i", "jj", "<Esc>")
+vim.keymap.set("n", "q", "<Esc>")
 
+-- nnoremap ("<C-d", "<C-d>zz")
+-- nnoremap ("<C-u", "<C-u>zz")
+--
 -- [[ TRY TO REMAP THESE KEYS ]]
 -- 1. Add kaymap to save Add a keymap which will save the document whenever you hit  Ctrl + Enter`.
 -- 2. Add keymap to exit out of Telescope
--- 3. Integrate same button to Toggle entry into Neo-tree and out of it.
--- vim.keymap.set("n", "<leader>qq", "<Esc><Esc>")
 
 vim.keymap.set("n", "<leader>n", function()
 	vim.cmd("Neotree")
@@ -23,7 +25,7 @@ end, { desc = "Open Mason" })
 -- <Esc>
 vim.keymap.set("n", "<leader>e", "<Esc><Esc>", { desc = "Exit Telescope" })
 
-vim.keymap.set("n", "<leader>n", "<cmd>nohlsearch<CR>") --> MyNote:(come to this command and set it to desired state)
+vim.keymap.set("n", "<C-n>", "<cmd>nohlsearch<CR>") --> MyNote:(come to this command and set it to desired state)
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 

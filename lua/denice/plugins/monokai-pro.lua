@@ -1,7 +1,7 @@
 return { -- Monokai Pro Theme
 	"loctvl842/monokai-pro.nvim",
 	lazy = false,
-	priority = 1001, -- Make sure to load this before all the other start plugins.
+	priority = 1000, -- Make sure to load this before all the other start plugins.
 	init = function()
 		vim.cmd.colorscheme("monokai-pro-spectrum")
 		vim.cmd.hi("Comment gui=none")
@@ -9,8 +9,6 @@ return { -- Monokai Pro Theme
 	config = function()
 		require("monokai-pro").setup({
 			transparent_background = false,
-			terminal_colors = true,
-			devicons = true, -- highlight the icons of `nvim-web-devicons`
 			styles = {
 				comment = { italic = true },
 				keyword = { italic = true }, -- any other keyword
@@ -40,5 +38,6 @@ return { -- Monokai Pro Theme
 				},
 			},
 		})
+		-- vim.cmd([[colorscheme monokai-pro-spectrum]])
 	end,
 }
