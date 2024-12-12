@@ -1,7 +1,7 @@
 return { -- Monokai Pro Theme
 	"loctvl842/monokai-pro.nvim",
 	lazy = false,
-	priority = 1000, -- Make sure to load this before all the other start plugins.
+	priority = 1000,
 	init = function()
 		vim.cmd.colorscheme("monokai-pro-spectrum")
 		vim.cmd.hi("Comment gui=none")
@@ -38,6 +38,5 @@ return { -- Monokai Pro Theme
 				},
 			},
 		})
-		-- vim.cmd([[colorscheme monokai-pro-spectrum]])
 	end,
 }

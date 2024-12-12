@@ -3,5 +3,5 @@ return {
 	main = "ibl",
 	config = function()
 		require("ibl").setup()
-	end
+	end,
 }

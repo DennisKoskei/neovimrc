@@ -3,10 +3,6 @@ vim.g.maplocalleader = " "
 
 vim.g.have_nerd_font = true
 
-vim.g.netrw_browse_split = 0
-vim.g.netrw_banner = 0
-vim.g.netrw_winsize = 25
-
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.scrolloff = 15
@@ -34,7 +30,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.list = true
-vim.opt.listchars = { tab = "»» ", trail = "·", nbsp = "␣" }
+vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 vim.opt.inccommand = "split"
 vim.opt.cursorline = true
 
