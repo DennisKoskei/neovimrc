@@ -66,7 +66,7 @@ return {-- Main LSP Configuration
 
 		-- Change diagnostic symbols in the sign column (gutter)
 		if vim.g.have_nerd_font then
-			local signs = { ERROR = "E", WARN = "W", INFO = "I", HINT = "H" }
+			local signs = { ERROR = '', WARN = '', INFO = '', HINT = '' }
 			local diagnostic_signs = {}
 			for type, icon in pairs(signs) do
 				diagnostic_signs[vim.diagnostic.severity[type]] = icon
