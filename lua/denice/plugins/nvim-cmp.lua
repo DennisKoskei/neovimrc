@@ -4,15 +4,18 @@ return { -- Autocompletion
 	dependencies = {
 		{
 			"L3MON4D3/LuaSnip",
-			build = "make install_jsregexp",
-			dependencies = {},
+			-- build = "make install_jsregexp",
+			dependencies = {
+				"saadparwaiz1/cmp_luasnip",
+				"rafamadriz/friendly-snippets",
+			},
 		},
-		"saadparwaiz1/cmp_luasnip",
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-path",
 	},
 	config = function()
 		local cmp = require("cmp")
+		require("luasnip.loaders.from_vscode").lazy_load()
 		local luasnip = require("luasnip")
 		luasnip.config.setup({})
 
@@ -23,13 +26,19 @@ return { -- Autocompletion
 				end,
 			},
 			completion = { completeopt = "menu,menuone,noinsert" },
+			window = {
+				completion = cmp.config.window.bordered(),
+				documentation = cmp.config.window.bordered(),
+			},
 			mapping = cmp.mapping.preset.insert({
 				["<C-n>"] = cmp.mapping.select_next_item(), -- Select the [n]ext item
-				["<C-p>"] = cmp.mapping.select_prev_item(), -- Select the [p]revious item
+				["<C-p>"] = cmp.mapping.select_prev_item(), -- Select the [p]revious iteml
 				["<C-b>"] = cmp.mapping.scroll_docs(-4), -- Scroll the documentation window [b]ack / [f]orward
 				["<C-f>"] = cmp.mapping.scroll_docs(4),
 				["<C-y>"] = cmp.mapping.confirm({ select = true }),
+				["<CR>"] = cmp.mapping.confirm({ select = true }),
 				["<C-Space>"] = cmp.mapping.complete({}),
+				["<C-e>"] = cmp.mapping.abort(),
 				["<C-l>"] = cmp.mapping(function()
 					if luasnip.expand_or_locally_jumpable() then
 						luasnip.expand_or_jump()
@@ -42,14 +51,14 @@ return { -- Autocompletion
 				end, { "i", "s" }),
 			}),
 			sources = {
-				{
-					name = "lazydev",
-					-- set group index to 0 to skip loading LuaLS completions as lazydev recommends it
-					group_index = 0,
-				},
 				{ name = "nvim_lsp" },
 				{ name = "luasnip" },
-				{ name = "path" },
+				-- {
+				-- 	name = "lazydev",
+				-- 	-- set group index to 0 to skip loading LuaLS completions as lazydev recommends it
+				-- 	group_index = 0,
+				-- },
+				-- { name = "path" },
 			},
 		})
 	end,
