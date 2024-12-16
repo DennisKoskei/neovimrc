@@ -1,4 +1,4 @@
-return {-- Main LSP Configuration
+return { -- Main LSP Configuration
 	"neovim/nvim-lspconfig",
 	dependencies = {
 		{ "williamboman/mason.nvim", config = true },
@@ -24,16 +24,11 @@ return {-- Main LSP Configuration
 				map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
 				map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
 				map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
-				map(
-					"<leader>ws",
-					require("telescope.builtin").lsp_dynamic_workspace_symbols,
-					"[W]orkspace [S]ymbols"
-				)
+				map("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 
 				local client = vim.lsp.get_client_by_id(event.data.client_id)
 				if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
-					local highlight_augroup =
-						vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
+					local highlight_augroup = vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
 
 					vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
 						buffer = event.buf,
@@ -66,7 +61,7 @@ return {-- Main LSP Configuration
 
 		-- Change diagnostic symbols in the sign column (gutter)
 		if vim.g.have_nerd_font then
-			local signs = { ERROR = '', WARN = '', INFO = '', HINT = '' }
+			local signs = { ERROR = "", WARN = "", INFO = "", HINT = "" }
 			local diagnostic_signs = {}
 			for type, icon in pairs(signs) do
 				diagnostic_signs[vim.diagnostic.severity[type]] = icon
@@ -77,7 +72,6 @@ return {-- Main LSP Configuration
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
 		capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 		local servers = {
-			pyright = {},
 			lua_ls = {
 				settings = {
 					Lua = {

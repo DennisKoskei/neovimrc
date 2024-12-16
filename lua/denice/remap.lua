@@ -4,6 +4,9 @@ vim.keymap.set("i", "jj", "<Esc>")
 -- nnoremap ("<C-d", "<C-d>zz")
 -- nnoremap ("<C-u", "<C-u>zz")
 
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+
 -- [[ TRY TO REMAP THESE KEYS ]]
 -- 1. Add kaymap to save Add a keymap which will save the document whenever you hit  Ctrl + Enter`.
 -- 2. Add keymap to exit out of Telescope
