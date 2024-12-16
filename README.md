@@ -1,16 +1,16 @@
 # My Neovim config
 
-This repo contains my personal Neovimconfiguration. Feel free to use, adapt, and contirubet to it!. I've tried to make it as moduler and easy as possible to navigate through the files.
+This repo contains my personal Neovimconfiguration. Feel free to use, adapt, and contribute to it!. I've tried to make it as moduler and easy as possible to navigate through the files.
 
 ## Features, or rather Plugins I've used
 
 1. Telescope - for fuzzy finding files and more.
 2. Neo-tree - navigating through my directories.
 3. Monokai-Pro - theme/colourscheme.
-4. Nvim-treesitter - 
+4. Treesitter - 
 5. nvim-web-devicons - for mono fonts and icons.
 6. LSP Confgurations
-    - nvim-lspconfig
+    - lspconfig
     - nvim-cmp
 7. gitsigns - 
 8. Lazy.nvim - My Plugin Manager

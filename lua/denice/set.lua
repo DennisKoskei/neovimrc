@@ -7,6 +7,7 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.scrolloff = 15
 vim.opt.colorcolumn = "80"
+vim.opt.mouse = "n"
 
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4

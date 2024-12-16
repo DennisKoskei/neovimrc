@@ -36,7 +36,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
 		vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
 		vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
 		vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "[ ] Find existing buffers" })
-		-- vim.keymap.set("n", "q","<Esc>" , { desc = "[q] Exit Telescope" })
+		-- vim.keymap.set("n", "Q","<Esc><Esc>" , require("telescope.action").close() { desc = "[q] Exit Telescope" })
 
 		vim.keymap.set("n", "<leader>/", function()
 			builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
