@@ -1,38 +1,46 @@
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+local opt = vim.opt
+local global = vim.g
 
-vim.g.have_nerd_font = true
+global.mapleader = " "
+global.maplocalleader = " "
 
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.scrolloff = 15
-vim.opt.colorcolumn = "80"
-vim.opt.mouse = "n"
+global.have_nerd_font = true
 
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
-vim.opt.smartindent = true
+global.netrw_liststyle = 3
 
-vim.opt.backup = false
-vim.opt.swapfile = false
--- vim.opt.undodir = os.getenv("HOME") .. "/nvim/undodir"
--- vim.opt.undofile = true
+opt.number = true
+opt.relativenumber = true
+opt.scrolloff = 15
+opt.colorcolumn = "80"
+opt.mouse = "n"
 
-vim.opt.showmode = false
+-- tabs and indentation
+opt.tabstop = 2
+opt.softtabstop = 2
+opt.shiftwidth = 2
+opt.expandtab = true
+opt.smartindent = true
+opt.smarttab = true
+opt.smoothscroll = true
+
+opt.backup = false
+opt.swapfile = false
+opt.undofile = true
+-- opt.undodir = os.getenv("HOME") .. "/nvim/undodir"
+
+opt.showmode = false
 vim.schedule(function()
-	vim.opt.clipboard = "unnamedplus" -- This is used to set a global clipboard (instead of having a buffer).
+	opt.clipboard = "unnamedplus" -- This is used to set a global clipboard (instead of having a buffer).
 end)
-vim.opt.breakindent = true
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.signcolumn = "yes"
-vim.opt.splitright = true
-vim.opt.splitbelow = true
-vim.opt.list = true
-vim.opt.inccommand = "split"
-vim.opt.cursorline = true
+opt.breakindent = true
+opt.ignorecase = true
+opt.smartcase = true
+opt.signcolumn = "yes"
+opt.splitright = true
+opt.splitbelow = true
+opt.termguicolors = true
+opt.inccommand = "split"
+opt.cursorline = true
 
-vim.opt.timeoutlen = 300
-vim.opt.updatetime = 50
+opt.timeoutlen = 300
+opt.updatetime = 50

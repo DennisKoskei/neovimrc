@@ -13,6 +13,13 @@ require("lazy").setup({
 	spec = {
 		{ import = "denice.plugins" },
 	},
+	checker = {
+		enabled = true,
+		notify = false,
+	},
+	change_detection = {
+		notify = false,
+	},
 	{
 		ui = {
 			icons = vim.g.have_nerd_font and {} or {
