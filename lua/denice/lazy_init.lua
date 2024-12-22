@@ -9,10 +9,17 @@ end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+	install = { colorscheme = { "monokai-pro-spectrum" } },
 	spec = {
 		{ import = "denice.plugins" },
 	},
-	install = { colorscheme = { "monokai-pro-spectrum" } },
+	checker = {
+		enabled = true,
+		notify = false,
+	},
+	change_detection = {
+		notify = false,
+	},
 	{
 		ui = {
 			icons = vim.g.have_nerd_font and {} or {

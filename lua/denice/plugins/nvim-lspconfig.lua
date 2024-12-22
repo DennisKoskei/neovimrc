@@ -1,12 +1,19 @@
 return { -- Main LSP Configuration
 	"neovim/nvim-lspconfig",
 	dependencies = {
-		{ "williamboman/mason.nvim", config = true },
+		{
+			"williamboman/mason.nvim",
+			config = true,
+		},
 		"williamboman/mason-lspconfig.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
-		{ "j-hui/fidget.nvim", opts = {} },
+		{
+			"j-hui/fidget.nvim",
+			opts = {},
+		},
 		"hrsh7th/cmp-nvim-lsp",
 	},
+
 	config = function()
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
@@ -71,6 +78,7 @@ return { -- Main LSP Configuration
 
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
 		capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+
 		local servers = {
 			lua_ls = {
 				settings = {
@@ -82,11 +90,21 @@ return { -- Main LSP Configuration
 					},
 				},
 			},
+			eslint_d,
+			tsserver,
+			tailwindcss,
+			cssls,
 		}
 
 		require("mason").setup()
 		local ensure_installed = vim.tbl_keys(servers or {})
 		vim.list_extend(ensure_installed, {
+			"eslint-lsp",
+			"prettierd",
+			"typescript-language-server",
+			"tailwindcss-language-server",
+			"black",
+			"mypy",
 			"stylua", -- Used to format Lua code
 		})
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })

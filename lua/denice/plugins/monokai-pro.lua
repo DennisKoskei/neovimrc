@@ -9,6 +9,7 @@ return { -- Monokai Pro Theme
 	config = function()
 		require("monokai-pro").setup({
 			transparent_background = false,
+			devicons = true,
 			styles = {
 				comment = { italic = true },
 				keyword = { italic = true }, -- any other keyword
