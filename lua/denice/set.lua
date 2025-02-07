@@ -12,7 +12,7 @@ opt.number = true
 opt.relativenumber = true
 opt.scrolloff = 15
 opt.colorcolumn = "80"
-opt.mouse = "n"
+opt.mouse = ""
 
 -- tabs and indentation
 opt.tabstop = 2

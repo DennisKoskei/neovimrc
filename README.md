@@ -1,53 +1,105 @@
-# My Neovim config
+# 🌟 My Ultimate Neovim Configuration
 
-This repo contains my personal Neovim configuration. Feel free to use, adapt, and contribute to it!. I've tried to make it as moduler and easy as possible to navigate through the files.
+Welcome to my personal **Neovim configuration** – an optimized, modular, and highly extensible setup built for speed, productivity, and an amazing coding experience. Whether you're a seasoned Vim user or just starting, feel free to clone, tweak, and contribute!
 
-## Features, or rather Plugins I've used
+## 🚀 **Features & Plugins**
 
-1. Lazy.nvim - My Plugin Manager
-1. Telescope - for fuzzy finding files and more.
-1. Neo-tree - navigating through my directories.
-1. Monokai-Pro - theme/colourscheme.
-1. Treesitter - For syntax highlighting and incremental parsing
-1. nvim-web-devicons - for mono fonts and icons.
-1. LSP Confgurations
-   - lspconfig
-   - nvim-cmp
-1. gitsigns -
-1. Other small plugins such as:
-   - lualine
-   - mini.lua
-   - undotree
-   - zen-mode
-   - speedtyper
-   - lazydev
-   - indent_blankline
+This setup is powered by some of the best **Neovim plugins** available, ensuring smooth navigation, powerful editing, and enhanced development workflow.
 
-## **Getting Started**
+### **Core Features:**
 
-0. Ensure you have Neovim installed
+- **Lazy.nvim** - Efficient and lightweight plugin manager.
+- **Telescope.nvim** - Supercharged fuzzy finder for files, text, and more.
+- **Neo-tree.nvim** - File explorer with Git integration.
+- **Monokai-Pro** - Aesthetic theme with vibrant colors.
+- **Treesitter** - Advanced syntax highlighting and incremental parsing.
+- **nvim-web-devicons** - Beautiful file icons.
+- **LSP Configurations:**
+  - `lspconfig` - Language Server Protocol setup.
+  - `nvim-cmp` - Smart autocompletion.
+- **Git Integration:**
+  - `gitsigns.nvim` - Show Git changes in the gutter.
+  - `lazygit.nvim` - Smooth Git workflow inside Neovim.
+- **Quality of Life Improvements:**
+  - `lualine.nvim` - Minimal & stylish statusline.
+  - `nvim-autopairs` - Automatically close brackets and quotes.
+  - `indent-blankline.nvim` - Visual indentation guides.
+  - `which-key.nvim` - Displays keybinding suggestions.
+  - `todo-comments.nvim` - Highlight and manage TODO comments.
+  - `undotree.nvim` - Better undo history visualization.
+  - `zenmode.nvim` - Focus mode for deep work.
+  - `speedtyper.nvim` - Fun typing practice inside Neovim!
+  - `vim-sleuth.nvim` - Auto-detect tab width and indentation.
 
-1. Go to your cofig directory which may look like `~./config/` on linux or `C:/User/Appdata/` on windows.
+## 🛠 **Installation & Setup**
 
-2. In that directory, create a directory called `nvim`, and cd into it.
+### **Prerequisites:**
 
-3. **Clone the repository**. This will copy the repository to your current `nvim` directory.
+Ensure you have Neovim installed. Also, install the following dependencies:
+
+#### **Linux/macOS (Using APT/YUM/Pacman):**
+
+```bash
+sudo apt install ripgrep 7zip unzip wget curl tar pwsh node -y
+```
+
+#### **Windows (Using PowerShell):**
+
+```powershell
+winget install --id BurntSushi.ripgrep
+winget install --id 7zip.7zip
+winget install --id Microsoft.PowerShell
+winget install --id OpenJS.NodeJS
+winget install --id GNU.tar
+winget install --id curl.curl
+winget install --id unzip
+```
+
+#### **Windows (Using Chocolatey):**
+
+```powershell
+choco install ripgrep 7zip.install unzip wget curl tar pwsh nodejs -y
+```
+
+### **Clone the Repository**
+
+1. Navigate to your Neovim config directory:
+
+   - **Linux/macOS:** `~/.config/nvim/`
+   - **Windows:** `C:/Users/<YourName>/AppData/Local/nvim/`
+
+2. **Clone this repo into the `nvim` directory:**
+
    ```bash
    git clone https://github.com/DennisKoskei/neovimrc.git .
    ```
-4. **Restart nvim**. You'll see the basic configuration trying to setup itself. Give it a few seconds to download all the necessary configuration files.
 
-## **Contributing:**
+3. **Launch Neovim:**
+   ```bash
+   nvim
+   ```
+   The setup will automatically install plugins on the first run. Give it a few seconds to configure everything!
 
-Contributions are welcome! Please open an issue or submit a pull request if you find any bugs or have suggestions for improvements.
+## 🛠 **Usage & Keybindings**
 
-## **Dependencies:**
+Here are some useful commands to get started:
 
-- ripgrep
-- 7zip
-- unzip
-- wget
-- curl
-- tar
-- pwsh
-- node
+- **Fuzzy find files:** `<leader>pf` (Telescope)
+- **Live Grep in files:** `<leader>pf` (Telescope)
+- **Open file explorer:** `<leader>n` (Neo-tree)
+- **Close file explorer:** `<leader>e` (Neo-tree)
+- **Show Git status:** `<leader>lg` (LazyGit)
+- **Close Git status:** `q` (LazyGit)
+- **Toggle undo history:** `<leader>u` (Undotree)
+- **Enable Zen Mode:** `<leader>z` (ZenMode)
+- **Show keybinds:** `<leader>wk` (Which-Key)
+
+## 🤝 **Contributing**
+
+I welcome contributions! If you have any suggestions, bug reports, or improvements, feel free to open an issue or submit a pull request.
+
+## 🐝 **License**
+
+This configuration is open-source under the **MIT License** – use it, modify it, and make it your own!
+
+🔥 **Happy Vimming!** 🚀
