@@ -100,6 +100,7 @@ return { -- Main LSP Configuration
 		local ensure_installed = vim.tbl_keys(servers or {})
 		vim.list_extend(ensure_installed, {
 			"eslint-lsp",
+			"eslint_d",
 			"prettierd",
 			"typescript-language-server",
 			"tailwindcss-language-server",
