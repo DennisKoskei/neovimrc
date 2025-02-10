@@ -1,13 +1,13 @@
 local keymap = vim.keymap
 
 keymap.set("n", "<leader>pp", vim.cmd.Ex)
-keymap.set("i", "jj", "<Esc>")
+keymap.set("i", "jj", "<Esc>", { desc = "Switch to Normal mode" })
 
 keymap.set("n", "<C-d", "<C-d>zz")
 keymap.set("n", "<C-u", "<C-u>zz")
 
-keymap.set("n", "n", "nzzzv")
-keymap.set("n", "N", "Nzzzv")
+keymap.set("n", "n", "nzzzv", { desc = "Scroll half page down and center cursor" })
+keymap.set("n", "N", "Nzzzv", { desc = "Scroll half up down and center cursor" })
 
 keymap.set("v", "J", ":m '<+1<CR>gv=gv")
 keymap.set("v", "K", ":m '<-2<CR>gv=gv")
