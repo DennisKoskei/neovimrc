@@ -12,11 +12,6 @@ keymap.set("n", "N", "Nzzzv", { desc = "Scroll half up down and center cursor" }
 keymap.set("v", "J", ":m '<+1<CR>gv=gv")
 keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
--- [[ TRY TO REMAP THESE KEYS ]]
--- 1. Add kaymap to save Add a keymap which will save the document whenever you hit  Ctrl + Enter`.
--- 2. Add keymap to exit out of Telescope
--- 3. Add keymap to exit out of Neo-tree when in an editor
-
 keymap.set("n", "<leader>n", "<cmd>Neotree<CR>", { desc = "Open Neotree Navigation panel" })
 keymap.set("n", "<leader>e", "<cmd>Neotree close<CR>", { desc = "Close Neotree Navigation panel" })
 
@@ -39,10 +34,4 @@ keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window"
 keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
--- keymap.set("n", "<leader><leader>", ":so<CR>", { desk = "Source file"})
-
-keymap.set("n", "<leader><leader>", function()
-	vim.cmd("Source")
-end, { desc = "Source file " })
-
-keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>")
+keymap.set("n", "<leader><leader>", ":source <CR>", { desc = "Source file " })
