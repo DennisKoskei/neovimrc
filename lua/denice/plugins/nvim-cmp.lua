@@ -2,6 +2,27 @@ return { -- Autocompletion
 	"hrsh7th/nvim-cmp",
 	event = "InsertEnter",
 	dependencies = {
+		"hrsh7th/cmp-nvim-lsp",
+		"hrsh7th/cmp-path",
+		"David-Kunz/cmp-npm",
+		"SergioRibera/cmp-dotenv",
+		"petertriho/cmp-git",
+		"hrsh7th/cmp-emoji",
+		"hrsh7th/cmp-omni",
+		"hrsh7th/cmp-cmdline",
+		"davidsierradz/cmp-conventionalcommits",
+		{
+			"hrsh7th/cmp-buffer",
+			lazy = true,
+		},
+		{
+			"hrsh7th/cmp-cmdline",
+			lazy = true,
+		},
+		{
+			"dmitmel/cmp-cmdline-history",
+			lazy = true,
+		},
 		{
 			"L3MON4D3/LuaSnip",
 			build = "make install_jsregexp",
@@ -11,9 +32,6 @@ return { -- Autocompletion
 				"onsails/lspkind.nvim",
 			},
 		},
-		"hrsh7th/cmp-nvim-lsp",
-		"hrsh7th/cmp-buffer",
-		"hrsh7th/cmp-path",
 	},
 	config = function()
 		local cmp = require("cmp")

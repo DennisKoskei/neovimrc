@@ -12,6 +12,8 @@ keymap.set("n", "N", "Nzzzv", { desc = "Scroll half up down and center cursor" }
 keymap.set("v", "J", ":m '<+1<CR>gv=gv")
 keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
+keymap.set("n", "yd", "gg0yGgg", { desc = "Yank Entire [d]ocument" })
+
 keymap.set("n", "<leader>n", "<cmd>Neotree<CR>", { desc = "Open Neotree Navigation panel" })
 keymap.set("n", "<leader>e", "<cmd>Neotree close<CR>", { desc = "Close Neotree Navigation panel" })
 
