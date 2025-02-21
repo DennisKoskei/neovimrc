@@ -4,6 +4,12 @@ local global = vim.g
 global.mapleader = " "
 global.maplocalleader = " "
 
+-- global.scriptencoding = "utf-8"
+opt.encoding = "utf-8"
+opt.fileencoding = "utf-8"
+
+opt.title = true
+
 global.have_nerd_font = true
 
 global.netrw_liststyle = 3
@@ -12,7 +18,7 @@ opt.number = true
 opt.relativenumber = true
 opt.scrolloff = 15
 opt.colorcolumn = "80"
-opt.mouse = ""
+opt.mouse = "n"
 
 -- tabs and indentation
 opt.tabstop = 2
@@ -38,6 +44,7 @@ opt.smartcase = true
 opt.signcolumn = "yes"
 opt.splitright = true
 opt.splitbelow = true
+opt.splitkeep = "cursor"
 opt.termguicolors = true
 opt.inccommand = "split"
 opt.cursorline = true

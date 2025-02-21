@@ -15,16 +15,30 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	install = { colorscheme = { "monokai-pro-spectrum" } },
 	spec = {
 		{ import = "denice.plugins" },
 	},
+	install = { colorscheme = { "monokai-pro-spectrum" } },
 	checker = {
 		enabled = true,
 		notify = false,
 	},
 	change_detection = {
 		notify = false,
+	},
+	performance = {
+		rtp = {
+			-- disable some rtp plugins
+			disabled_plugins = {
+				"gzip",
+				"matchparen",
+				"netrwPlugin",
+				"tarPlugin",
+				"tohtml",
+				"tutor",
+				"zipPlugin",
+			},
+		},
 	},
 	{
 		ui = {
