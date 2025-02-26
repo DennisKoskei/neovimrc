@@ -8,6 +8,15 @@ return { -- Monokai Pro Theme
 	end,
 	config = function()
 		require("monokai-pro").setup({
+			overrideScheme = function(cs, p, config, hp)
+				local cs_override = {}
+				local calc_bg = hp.blend(p.background, 0.75, "#000000")
+
+				cs_override.editor = {
+					background = calc_bg,
+				}
+				return cs_override
+			end,
 			transparent_background = false,
 			devicons = true,
 			styles = {
