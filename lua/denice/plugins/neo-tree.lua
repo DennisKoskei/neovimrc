@@ -9,15 +9,15 @@ return { -- Neo-Tree
 	},
 	config = function()
 		require("neo-tree").setup({
-		filesystem = {
-			hijack_netrw_behavior = "open_current", -- "open_current", "disabled"
-			filtered_items = {
-				visible = true,
-				hide_dotfiles = false,
-				hide_gitignored = false,
-				hide_hidden = false,
+			filesystem = {
+				hijack_netrw_behavior = "open_current", -- "open_current", "disabled"
+				filtered_items = {
+					visible = true,
+					hide_dotfiles = false,
+					hide_gitignored = false,
+					hide_hidden = false,
+				},
 			},
-		},
-	})
-	end
+		})
+	end,
 }
