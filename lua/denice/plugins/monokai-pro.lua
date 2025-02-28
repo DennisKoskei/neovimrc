@@ -18,6 +18,7 @@ return { -- Monokai Pro Theme
 				return cs_override
 			end,
 			transparent_background = false,
+			terminal_colors = true,
 			devicons = true,
 			styles = {
 				comment = { italic = true },
@@ -35,6 +36,8 @@ return { -- Monokai Pro Theme
 				"toggleterm",
 				"telescope",
 				"which-key",
+				"which-key",
+				"bufferline",
 				"neo-tree",
 			},
 			plugins = {
