@@ -12,6 +12,7 @@ opt.title = true
 
 global.have_nerd_font = true
 
+-- opt.shellslash = true
 global.netrw_liststyle = 3
 
 opt.number = true
