@@ -8,6 +8,7 @@ return {
 		-- REQUIRED
 		harpoon:setup()
 		-- REQUIRED
+
 		vim.keymap.set("n", "<leader>a", function()
 			harpoon:list():add()
 		end, { desc = "Add current buffer to Harpoon list" })

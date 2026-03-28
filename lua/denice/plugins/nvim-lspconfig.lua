@@ -2,16 +2,18 @@ return { -- Main LSP Configuration
 	"neovim/nvim-lspconfig",
 	dependencies = {
 		{
-			"williamboman/mason.nvim",
-			config = true,
+			"mason-org/mason.nvim",
+			---@module 'mason.settings'
+			---@type MasonSettings
+			---@diagnostic disable-next-line: missing-fields
+			opts = {},
 		},
-		"williamboman/mason-lspconfig.nvim",
+		"mason-org/mason-lspconfig.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		{
 			"j-hui/fidget.nvim",
 			opts = {},
 		},
-		"hrsh7th/cmp-nvim-lsp",
 	},
 
 	config = function()
@@ -23,18 +25,12 @@ return { -- Main LSP Configuration
 					vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
 				end
 
-				map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
-				map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
-				map("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
-				map("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
-				map("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
-				map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
-				map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
-				map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
-				map("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
+				map("grn", vim.lsp.buf.rename, "[R]e[n]ame")
+				map("gra", vim.lsp.buf.code_action, "[G]oto Code [A]ction", { "n", "x" })
+				map("grD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
 				local client = vim.lsp.get_client_by_id(event.data.client_id)
-				if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
+				if client and client:supports_method("textDocument/documentHighlight", event.buf) then
 					local highlight_augroup = vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
 
 					vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
@@ -43,10 +39,7 @@ return { -- Main LSP Configuration
 						callback = vim.lsp.buf.document_highlight,
 					})
 
-					vim.api.nvim_create_autocmd({
-						"CursorMoved",
-						"CursorMovedI",
-					}, {
+					vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
 						buffer = event.buf,
 						group = highlight_augroup,
 						callback = vim.lsp.buf.clear_references,
@@ -56,47 +49,68 @@ return { -- Main LSP Configuration
 						group = vim.api.nvim_create_augroup("kickstart-lsp-detach", { clear = true }),
 						callback = function(event2)
 							vim.lsp.buf.clear_references()
-							vim.api.nvim_clear_autocmds({
-								group = "kickstart-lsp-highlight",
-								buffer = event2.buf,
-							})
+							vim.api.nvim_clear_autocmds({ group = "kickstart-lsp-highlight", buffer = event2.buf })
 						end,
 					})
+				end
+
+				-- Toggle Inlay Hints -- NOTE: Disable if undesired
+				if client and client:supports_method("textDocument/inlayHint", event.buf) then
+					map("<leader>th", function()
+						vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
+					end, "[T]oggle Inlay [H]ints")
 				end
 			end,
 		})
 
-		-- Change diagnostic symbols in the sign column (gutter)
-		if vim.g.have_nerd_font then
-			local signs = { ERROR = "", WARN = "", INFO = "", HINT = "" }
-			local diagnostic_signs = {}
-			for type, icon in pairs(signs) do
-				diagnostic_signs[vim.diagnostic.severity[type]] = icon
-			end
-			vim.diagnostic.config({ signs = { text = diagnostic_signs } })
-		end
-
-		local capabilities = vim.lsp.protocol.make_client_capabilities()
-		capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
-
+		---@type table<string, vim.lsp.Config>
 		local servers = {
+			gopls = {},
+			pyright = {},
+			rust_analyzer = {},
+			ts_ls = {},
+			stylua = {},
+			tailwindcss = {},
+			cssls = {},
 			lua_ls = {
+				on_init = function(client)
+					if client.workspace_folders then
+						local path = client.workspace_folders[1].name
+						if
+							path ~= vim.fn.stdpath("config")
+							and (vim.uv.fs_stat(path .. "/.luarc.json") or vim.uv.fs_stat(path .. "/.luarc.jsonc"))
+						then
+							return
+						end
+					end
+
+					client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
+						runtime = {
+							version = "LuaJIT",
+							path = { "lua/?.lua", "lua/?/init.lua" },
+						},
+						workspace = {
+							checkThirdParty = false,
+							-- NOTE: this is a lot slower and will cause issues when working on your own configuration.
+							--  See https://github.com/neovim/nvim-lspconfig/issues/3189
+							library = vim.tbl_extend("force", vim.api.nvim_get_runtime_file("", true), {
+								"${3rd}/luv/library",
+								"${3rd}/busted/library",
+							}),
+						},
+					})
+				end,
 				settings = {
 					Lua = {
 						completion = {
 							callSnippet = "Replace",
 						},
-						diagnostics = { disable = { "missing-fields" } }, -- Toggle to ignore Lua_LS's noisy `missing-fields` warnings
+						diagnostics = { disable = { "missing-fields" } },
 					},
 				},
 			},
-			eslint = {},
-			ts_ls = {},
-			tailwindcss = {},
-			cssls = {},
 		}
 
-		require("mason").setup()
 		local ensure_installed = vim.tbl_keys(servers or {})
 		vim.list_extend(ensure_installed, {
 			"eslint-lsp",
@@ -105,18 +119,14 @@ return { -- Main LSP Configuration
 			"tailwindcss-language-server",
 			"black",
 			"mypy",
-			"stylua", -- Used to format Lua code
+			"stylua",
 		})
+
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
-		require("mason-lspconfig").setup({
-			handlers = {
-				function(server_name)
-					local server = servers[server_name] or {}
-					server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-					require("lspconfig")[server_name].setup(server)
-				end,
-			},
-		})
+		for name, server in pairs(servers) do
+			vim.lsp.config(name, server)
+			vim.lsp.enable(name)
+		end
 	end,
 }

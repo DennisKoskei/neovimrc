@@ -1,9 +1,11 @@
 return { -- Highlight, edit, and navigate code
 	"nvim-treesitter/nvim-treesitter",
+	lazy = false,
 	build = ":TSUpdate",
-	main = "nvim-treesitter.configs", -- Sets main module to use for opts
-	opts = {
-		ensure_installed = {
+	branch = "main",
+	-- [[ Configure Treesitter ]] See `:help nvim-treesitter-intro`
+	config = function()
+		local parsers = {
 			"bash",
 			"python",
 			"c",
@@ -12,7 +14,7 @@ return { -- Highlight, edit, and navigate code
 			"lua",
 			"luadoc",
 			"markdown",
-			"query",
+			"markdown_inline",
 			"vim",
 			"vimdoc",
 			"javascript",
@@ -21,15 +23,24 @@ return { -- Highlight, edit, and navigate code
 			"go",
 			"rust",
 			"css",
-		},
-		auto_install = true,
-		highlight = {
-			enable = true,
-			additional_vim_regex_highlighting = { "ruby" },
-		},
-		indent = {
-			enable = true,
-			disable = { "ruby" },
-		},
-	},
+		}
+		require("nvim-treesitter").install(parsers)
+		vim.api.nvim_create_autocmd("FileType", {
+			callback = function(args)
+				local buf, filetype = args.buf, args.match
+
+				local language = vim.treesitter.language.get_lang(filetype)
+				if not language then
+					return
+				end
+
+				if not vim.treesitter.language.add(language) then
+					return
+				end
+
+				vim.treesitter.start(buf, language)
+				vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+			end,
+		})
+	end,
 }

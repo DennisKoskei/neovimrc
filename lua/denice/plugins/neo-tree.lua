@@ -10,6 +10,11 @@ return { -- Neo-Tree
 	config = function()
 		require("neo-tree").setup({
 			filesystem = {
+				window = {
+					mappings = {
+						["\\"] = "close_window",
+					},
+				},
 				hijack_netrw_behavior = "open_current", -- "open_current", "disabled"
 				filtered_items = {
 					visible = true,
