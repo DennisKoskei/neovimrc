@@ -37,7 +37,7 @@ opt.undofile = true
 
 opt.showmode = false
 vim.schedule(function()
-	opt.clipboard = "unnamedplus" -- This is used to set a global clipboard (instead of having a buffer).
+	opt.clipboard = "unnamedplus"
 end)
 opt.breakindent = true
 opt.ignorecase = true
@@ -51,4 +51,6 @@ opt.inccommand = "split"
 opt.cursorline = true
 
 opt.timeoutlen = 300
-opt.updatetime = 50
+opt.updatetime = 250
+
+opt.confirm = true

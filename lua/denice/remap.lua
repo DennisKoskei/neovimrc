@@ -1,6 +1,6 @@
 local keymap = vim.keymap
 
-keymap.set("n", "<leader>pp", vim.cmd.Ex, { desc = "Show Hexplore" })
+-- keymap.set("n", "<leader>pp", vim.cmd.Ex, { desc = "Show Hexplore" })
 keymap.set("i", "jj", "<Esc>", { desc = "Switch to Normal mode" })
 
 keymap.set("n", "<C-d", "<C-d>zz", { desc = "Scroll document 1/2 page down, keeping cursor at  the center" })
@@ -16,17 +16,31 @@ keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move highlighed sentence up" 
 
 keymap.set("n", "yd", "gg0yGgg", { desc = "Yank Entire [d]ocument" }) -- INFO: Search for a way to keep the cursor at same position
 -- keymap.set("n", "yD", "ggVG<CR>", { desc = "Highlight Entire [d]ocument" }) -- INFO: Make this work
+vim.keymap.set("n", "<leader>v", "ggVG", { desc = "Select entire document" })
 
-keymap.set("n", "<leader>n", "<cmd>Neotree<CR>", { desc = "Open [N]eotree Navigation panel" })
+keymap.set("n", "\\", "<cmd>Neotree reveal<CR>", { desc = "Open [N]eotree Navigation panel" })
 keymap.set("n", "<leader>e", "<cmd>Neotree close<CR>", { desc = "Close Neotre[e] Navigation panel" })
 
 keymap.set("n", "<leader>la", "<cmd>Lazy<CR>", { desc = "Open Lazy" })
 keymap.set("n", "<leader>ma", "<cmd>Mason<CR>", { desc = "Open Mason" })
 
-keymap.set("n", "<C-n>", "<cmd>nohlsearch<CR>") --> MyNote:(come to this command and set it to desired state)
+keymap.set("n", "<C-n>", "<cmd>nohlsearch<CR>")
 
--- keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" }) -- INFO: Not working, Consider editing or deleting
--- keymap.set("t", "<leader>q", "<C-\\><CR><C-n>", { desc = "Exit terminal mode" }) -- INFO: Not working, Consider editing or deleting
+vim.diagnostic.config({
+	update_in_insert = false,
+	severity_sort = true,
+	float = { border = "rounded", source = "if_many" },
+	underline = { severity = { min = vim.diagnostic.severity.WARN } },
+
+	virtual_text = true, -- Text shows up at the end of the line
+	virtual_lines = false, -- Text shows up underneath the line, with virtual lines
+
+	jump = { float = true },
+})
+
+keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+
+keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 -- Duhh.. !!!
 keymap.set("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')
@@ -40,4 +54,11 @@ keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window"
 keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
-keymap.set("n", "<leader><leader>", ":source <CR>", { desc = "Source file " })
+-- NOTE: Some terminals have colliding keymaps or are not able to send distinct keycodes
+--
+-- keymap.set("n", "<C-S-h>", "<C-w>H", { desc = "Move window to the left" })
+-- keymap.set("n", "<C-S-l>", "<C-w>L", { desc = "Move window to the right" })
+-- keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
+-- keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
+
+keymap.set("n", "<leader><leader>", ":source<CR>", { desc = "Source file " })
