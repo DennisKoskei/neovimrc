@@ -4,7 +4,6 @@ local global = vim.g
 global.mapleader = " "
 global.maplocalleader = " "
 
--- global.scriptencoding = "utf-8"
 opt.encoding = "utf-8"
 opt.fileencoding = "utf-8"
 
@@ -33,7 +32,6 @@ opt.smoothscroll = true
 opt.backup = false
 opt.swapfile = false
 opt.undofile = true
--- opt.undodir = os.getenv("HOME") .. "/nvim/undodir"
 
 opt.showmode = false
 vim.schedule(function()
@@ -51,6 +49,6 @@ opt.inccommand = "split"
 opt.cursorline = true
 
 opt.timeoutlen = 300
-opt.updatetime = 250
+opt.updatetime = 50
 
 opt.confirm = true
