@@ -16,6 +16,9 @@ require("lazy").setup({
 		enabled = true,
 		notify = false,
 	},
+	rocks = {
+		enabled = false,
+	},
 	change_detection = {
 		notify = false,
 	},
@@ -28,7 +31,7 @@ require("lazy").setup({
 				"netrwPlugin",
 				"tarPlugin",
 				"tohtml",
-				"tutor",
+				-- "tutor",
 				"zipPlugin",
 			},
 		},

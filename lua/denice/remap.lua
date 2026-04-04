@@ -1,12 +1,17 @@
 local keymap = vim.keymap
 
 keymap.set("i", "jj", "<Esc>", { desc = "Switch to Normal mode" })
-keymap.set("i", "JJ", "<Esc>", { desc = "Switch to Normal mode" })
+keymap.set("i", "JJ", '<cmd>echo "!! Currently in Caps. Use jj to Exit to NORMAL MODE"<CR>')
 
 keymap.set("n", "<C-d", "<C-d>zz", { desc = "Scroll half page down and center cursor" })
-keymap.set("n", "<C-u", "<C-u>zz", { desc = "Scroll half up down and center cursor" })
+keymap.set("n", "<C-u", "<C-u>zz", { desc = "Scroll half page up and center cursor" })
+
+keymap.set("i", "<C-j>", "<Esc>o", { desc = "New line below" })
+keymap.set("i", "<C-u>", "<Esc>O", { desc = "New line above" })
 
 keymap.set("n", "x", '"_x', { desc = "Doesn't store cut character" })
+
+keymap.set("n", "<leader><leader>", ":wall<CR>", { desc = "Save All files" })
 
 keymap.set("v", "J", ":m '<+1<CR>gv=gv", { desc = "Move highlighed sentence down" })
 keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move highlighed sentence up" })

@@ -45,6 +45,7 @@ opt.splitright = true
 opt.splitbelow = true
 opt.splitkeep = "cursor"
 opt.termguicolors = true
+opt.lazyredraw = true
 opt.inccommand = "split"
 opt.cursorline = true
 
