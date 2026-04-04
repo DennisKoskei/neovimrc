@@ -43,65 +43,23 @@ Built for **flow-state editing**:
 - `<leader>v` → Select entire file
 - `yd` → Yank whole document (without losing position)
 
-#### Movement Discipline 😤
-
-Arrow keys are disabled:
-
-```
-
-"Use h/j/k/l"
-
-```
+**Discipline:** Arrow keys are disabled — use `h/j/k/l`.
 
 ---
 
 ## 🧩 Plugin Stack
 
-Carefully curated. Every plugin solves a real problem.
+Carefully curated, minimal and powerful. Every plugin solves a real problem.
 
-### 🔍 Navigation & Search
-
-- `telescope.nvim` — Fuzzy finding everything
-- `flash.nvim` — Lightning-fast motion
-- `harpoon` — Instant file switching
-- `neo-tree.nvim` — File explorer
-
-### 🧠 LSP & Completion
-
-- `nvim-lspconfig`
-- `none-ls`
-- `blink.cmp` + `copilot-cmp`
-
-### 🎨 UI / UX
-
-- `lualine.nvim` — Clean statusline
-- `monokai-pro` — Aesthetic, readable theme
-- `alpha.nvim` — Startup dashboard
-- `indent-blankline.nvim`
-- `which-key.nvim`
-
-### ⚡ Editing Enhancements
-
-- `nvim-autopairs`
-- `conform.nvim` — Formatting
-- `guess-indent.nvim`
-- `todo-comments.nvim`
-
-### 🔧 Dev Tools
-
-- `gitsigns.nvim`
-- `lazygit.nvim`
-- `grug-far.nvim` — Find & replace engine
-
-### 🌲 Syntax & Parsing
-
-- `nvim-treesitter`
-
-### 🧪 Extras (That Actually Matter)
-
-- `smear-cursor.nvim` — Smooth cursor visuals
-- `cloak.nvim` — Hide secrets
-- `markdown-plus.nvim`
+| Features            | Plugins                                |
+| ------------------- | -------------------------------------- |
+| 🔍 Navigation       | Telescope, Flash, Harpoon, Neo-tree    |
+| 🧠 LSP/Compilation  | lspconfig, none-ls, blink.cmp, Copilot |
+| 🎨 UI               | Lualine, Monokai Pro, Alpha, Which-key |
+| ⚡ Editing          | Autopairs, Conform, Guess-indent       |
+| 🔧 Dev Tools        | Gitsigns, Lazygit                      |
+| 🌲 Syntax & Parsing | Treesitter                             |
+| 🧪 Extras           | Smear-cursor, Cloak, Todo-comments     |
 
 ---
 
@@ -119,16 +77,15 @@ Carefully curated. Every plugin solves a real problem.
 
 ### Setup
 
-#### Linux / macOS
-
-```
+```bash
+# Linux / macOS
 git clone https://github.com/DennisKoskei/neovimrc.git ~/.config/nvim
-```
 
-#### Windows (PowerShell)
-
-```powershell
+# Windows (PowerShell)
 git clone https://github.com/DennisKoskei/neovimrc.git $env:LOCALAPPDATA\nvim
+
+nvim
+
 ```
 
 Plugins install automatically on first launch via `lazy.nvim`.
@@ -163,21 +120,6 @@ Plugins install automatically on first launch via `lazy.nvim`.
 | Open Mason             | `<leader>ma` |
 | Clear search highlight | `<C-n>`      |
 | Diagnostics list       | `<leader>q`  |
-
----
-
-## 🧩 Structure
-
-Modular and easy to extend:
-
-```
-lua/
-  ├── plugins/
-  ├── init.lua
-  ├── lazy_init.lua/
-  ├── remaps.lua
-  └── set.lua
-```
 
 ---
 
