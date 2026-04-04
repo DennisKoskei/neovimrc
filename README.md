@@ -1,105 +1,214 @@
-# 🌟 My Ultimate Neovim Configuration
+# ⚡ nvim — Precision Neovim Configuration
 
-Welcome to my personal **Neovim configuration** – an optimized, modular, and highly extensible setup built for speed, productivity, and an amazing coding experience. Whether you're a seasoned Vim user or just starting, feel free to clone, tweak, and contribute!
+> A fast, minimal, and highly intentional [Neovim](https://neovim.io/) setup built for **focus, speed, and flow**.
 
-## 🚀 **Features & Plugins**
+Designed for developers who care about **ergonomics**, **performance**, and **clarity over clutter**.
 
-This setup is powered by some of the best **Neovim plugins** available, ensuring smooth navigation, powerful editing, and enhanced development workflow.
+---
 
-### **Core Features:**
+## 🧠 Philosophy
 
-- **Lazy.nvim** - Efficient and lightweight plugin manager.
-- **Telescope.nvim** - Supercharged fuzzy finder for files, text, and more.
-- **Neo-tree.nvim** - File explorer with Git integration.
-- **Monokai-Pro** - Aesthetic theme with vibrant colors.
-- **Treesitter** - Advanced syntax highlighting and incremental parsing.
-- **nvim-web-devicons** - Beautiful file icons.
-- **LSP Configurations:**
-  - `lspconfig` - Language Server Protocol setup.
-  - `nvim-cmp` - Smart autocompletion.
-- **Git Integration:**
-  - `gitsigns.nvim` - Show Git changes in the gutter.
-  - `lazygit.nvim` - Smooth Git workflow inside Neovim.
-- **Quality of Life Improvements:**
-  - `lualine.nvim` - Minimal & stylish statusline.
-  - `nvim-autopairs` - Automatically close brackets and quotes.
-  - `indent-blankline.nvim` - Visual indentation guides.
-  - `which-key.nvim` - Displays keybinding suggestions.
-  - `todo-comments.nvim` - Highlight and manage TODO comments.
-  - `undotree.nvim` - Better undo history visualization.
-  - `zenmode.nvim` - Focus mode for deep work.
-  - `speedtyper.nvim` - Fun typing practice inside Neovim!
-  - `vim-sleuth.nvim` - Auto-detect tab width and indentation.
+- **Minimal, but not barebones**
+- **Fast by default**
+- **Every keymap earns its place**
+- **Zero friction workflow**
 
-## 🛠 **Installation & Setup**
+No gimmicks. No bloat. Just a clean, powerful editing environment.
 
-### **Prerequisites:**
+### ❓ WHY You Should care? (Switching to [Neovim](https://neovim.io/) )
 
-Ensure you have Neovim installed. Also, install the following dependencies:
+Imagine having an IDE directly in your terminal — no bloat, no startup lag, no **Microslop** 😂 — just pure speed and control. You still get all the essentials: autocompletion, blazingly fast navigation, and powerful LSP features, all in an extremely lightweight setup. But the real difference? It’s fully tailored to you. This isn’t an IDE anymore — it’s a **PDE**: a Personalized Development Environment.
 
-#### **Linux/macOS (Using APT/YUM/Pacman):**
+---
 
-```bash
-sudo apt install ripgrep 7zip unzip wget curl tar pwsh node -y
+## ✨ Core Experience
+
+### ⚙️ Editor Behavior
+
+- Relative numbers + centered scrolling (`scrolloff = 15`)
+- Persistent undo (`undofile`)
+- Smart case searching
+- Split navigation that _respects your focus_
+- Cursorline + 80-column visual guide
+- Zero distractions (no mode spam, no noise)
+
+### ⌨️ Keybinding Design
+
+Built for **flow-state editing**:
+
+- `jj` → Escape (no reaching for ESC)
+- `<C-d>` / `<C-u>` → Scroll + center
+- `<C-h/j/k/l>` → Seamless window navigation
+- `<leader><leader>` → Save all
+- `<leader>v` → Select entire file
+- `yd` → Yank whole document (without losing position)
+
+#### Movement Discipline 😤
+
+Arrow keys are disabled:
+
 ```
 
-#### **Windows (Using PowerShell):**
+"Use h/j/k/l"
+
+```
+
+---
+
+## 🧩 Plugin Stack
+
+Carefully curated. Every plugin solves a real problem.
+
+### 🔍 Navigation & Search
+
+- `telescope.nvim` — Fuzzy finding everything
+- `flash.nvim` — Lightning-fast motion
+- `harpoon` — Instant file switching
+- `neo-tree.nvim` — File explorer
+
+### 🧠 LSP & Completion
+
+- `nvim-lspconfig`
+- `none-ls`
+- `blink.cmp` + `copilot-cmp`
+
+### 🎨 UI / UX
+
+- `lualine.nvim` — Clean statusline
+- `monokai-pro` — Aesthetic, readable theme
+- `alpha.nvim` — Startup dashboard
+- `indent-blankline.nvim`
+- `which-key.nvim`
+
+### ⚡ Editing Enhancements
+
+- `nvim-autopairs`
+- `conform.nvim` — Formatting
+- `guess-indent.nvim`
+- `todo-comments.nvim`
+
+### 🔧 Dev Tools
+
+- `gitsigns.nvim`
+- `lazygit.nvim`
+- `grug-far.nvim` — Find & replace engine
+
+### 🌲 Syntax & Parsing
+
+- `nvim-treesitter`
+
+### 🧪 Extras (That Actually Matter)
+
+- `smear-cursor.nvim` — Smooth cursor visuals
+- `cloak.nvim` — Hide secrets
+- `markdown-plus.nvim`
+
+---
+
+## 🚀 Installation
+
+### Requirements
+
+- [Neovim](https://neovim.io/) (latest stable)
+- `git`
+- `ripgrep`
+- `node`
+- `curl`, `tar`, `unzip`
+
+---
+
+### Setup
+
+#### Linux / macOS
+
+```
+git clone https://github.com/DennisKoskei/neovimrc.git ~/.config/nvim
+```
+
+#### Windows (PowerShell)
 
 ```powershell
-winget install --id BurntSushi.ripgrep
-winget install --id 7zip.7zip
-winget install --id Microsoft.PowerShell
-winget install --id OpenJS.NodeJS
-winget install --id GNU.tar
-winget install --id curl.curl
-winget install --id unzip
+git clone https://github.com/DennisKoskei/neovimrc.git $env:LOCALAPPDATA\nvim
 ```
 
-#### **Windows (Using Chocolatey):**
+Plugins install automatically on first launch via `lazy.nvim`.
 
-```powershell
-choco install ripgrep 7zip.install unzip wget curl tar pwsh nodejs -y
+---
+
+## ⚡ Workflow Highlights
+
+- **Blazing startup** via lazy loading
+- **Instant navigation** (Telescope + Harpoon)
+- **IDE-level LSP** without IDE bloat
+- **Keyboard-first everything**
+
+---
+
+## 🧠 Notable Decisions
+
+- Clipboard is system-synced (`unnamedplus`)
+- No swap/backup files — clean workspace
+- Diagnostic UX optimized (no spam, meaningful highlights)
+- Terminal mode escape: `<Esc><Esc>`
+
+---
+
+## 🛠 Commands
+
+| Action                 | Keybinding   |
+| ---------------------- | ------------ |
+| Open file tree         | `\`          |
+| Close file tree        | `<leader>e`  |
+| Open Lazy              | `<leader>la` |
+| Open Mason             | `<leader>ma` |
+| Clear search highlight | `<C-n>`      |
+| Diagnostics list       | `<leader>q`  |
+
+---
+
+## 🧩 Structure
+
+Modular and easy to extend:
+
+```
+lua/
+  ├── plugins/
+  ├── init.lua
+  ├── lazy_init.lua/
+  ├── remaps.lua
+  └── set.lua
 ```
 
-### **Clone the Repository**
+---
 
-1. Navigate to your Neovim config directory:
+## 🎯 Who This Is For
 
-   - **Linux/macOS:** `~/.config/nvim/`
-   - **Windows:** `C:/Users/<YourName>/AppData/Local/nvim/`
+- Developers who want **speed without sacrificing power**
+- People tired of bloated IDEs
+- Vim users who value **intentional design**
 
-2. **Clone this repo into the `nvim` directory:**
+---
 
-   ```bash
-   git clone https://github.com/DennisKoskei/neovimrc.git .
-   ```
+## 🧬 Extend It
 
-3. **Launch Neovim:**
-   ```bash
-   nvim
-   ```
-   The setup will automatically install plugins on the first run. Give it a few seconds to configure everything!
+This config is built to be:
 
-## 🛠 **Usage & Keybindings**
+- Hackable
+- Understandable
+- Yours
 
-Here are some useful commands to get started:
+Fork it. Break it. Rebuild it.
 
-- **Fuzzy find files:** `<leader>pf` (Telescope)
-- **Live Grep in files:** `<leader>pf` (Telescope)
-- **Open file explorer:** `<leader>n` (Neo-tree)
-- **Close file explorer:** `<leader>e` (Neo-tree)
-- **Show Git status:** `<leader>lg` (LazyGit)
-- **Close Git status:** `q` (LazyGit)
-- **Toggle undo history:** `<leader>u` (Undotree)
-- **Enable Zen Mode:** `<leader>z` (ZenMode)
-- **Show keybinds:** `<leader>wk` (Which-Key)
+---
 
-## 🤝 **Contributing**
+## ⚖️ License
 
-I welcome contributions! If you have any suggestions, bug reports, or improvements, feel free to open an issue or submit a pull request.
+MIT — do whatever you want, just don’t make it slow 😉
 
-## 🐝 **License**
+---
 
-This configuration is open-source under the **MIT License** – use it, modify it, and make it your own!
+## 🧨 Final Note
 
-🔥 **Happy Vimming!** 🚀
+> Your editor should disappear.
+
+This one does.
