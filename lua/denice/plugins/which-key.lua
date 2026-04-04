@@ -11,9 +11,14 @@ return { -- Useful plugin to show you pending keybinds.
 
 		-- Document existing key chains
 		spec = {
+			{ "<leader>c", group = "[C]loak" },
+			{ "<leader>g", group = "[T]oggle" },
+			{ "<leader>h", group = "Git [H]unk", mode = { "n", "v" } }, -- Enable gitsigns recommended keymaps first
+			{ "<leader>l", group = "[L]azy..." },
+			{ "<leader>m", group = "Open [M][a]son" },
 			{ "<leader>s", group = "[S]earch", mode = { "n", "v" } },
 			{ "<leader>t", group = "[T]oggle" },
-			{ "<leader>h", group = "Git [H]unk", mode = { "n", "v" } }, -- Enable gitsigns recommended keymaps first
+			{ "<leader>z", group = "Harpoon Buffer Navigation" },
 			{ "gr", group = "LSP Actions", mode = { "n" } },
 		},
 	},
